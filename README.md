@@ -8,6 +8,7 @@
   * Vendégként szeretnék böngészni a meglepik között
   * Vendégként szeretném látni a megelepetéshez köthető embert
   * Vendégként szeretnék kiválasztani egy csomagot, és azt jól elküldeni
+  * Vendégként szeretnék én is regisztrált meglepetésgyártó lenni
   * Felhasználóként szeretnék belépni az oldalra
   * Felhasználóként szeretnék meglepetéseket hozzáadni magamhoz
   * Felhasználóként szeretnék a leírásomon módosítani
@@ -15,6 +16,6 @@
 
 2. Nem funkcionális követelmények
 
-  * Felhasználóbarát, ergonomikus elrendezés és kinézet.
-  * Gyors működés.
-  * Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés.
+  * Felhasználóbarát, egyszerű és könnyen érthető, elérhető elrendezés.
+  * hatékony és gyors működés.
+  * Biztonságos működés: jelszavak megfelelő tárolása, bizonyos funkciók belépéshez kötése.
