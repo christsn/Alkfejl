@@ -1,0 +1,27 @@
+{% extends 'mainlayout' %}
+
+
+ 
+ {% block content %}
+ <h1>{{user.username}} adatlapja</h1>
+ <div class="row">
+  {% for blog in blogs %}
+   <div class="col-md-4 col-sm-6">
+     <div class="panel panel-default">
+       <div class="panel-heading">
+         {{ blog.category}}
+         <span class="label label-warning pull-right">megtekintése</span>
+       </div>
+       <ul class="list-group">
+         <li class="list-group-item">
+           <a href="/blog/{{blog.id}}">
+           {{ blog.title }}
+           </a>
+         </li>
+       </ul>
+     </div>
+   </div>
+   {% endfor %}
+</div>
+ {% endblock %}
+  
