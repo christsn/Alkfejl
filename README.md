@@ -3,4 +3,4 @@
 # Közösségi Blogger oldal
 ## Dokumentáció
 
-A tényleges readme egy mappával feljebb található, mivel ezerkétszáz git commitom ment a levesbe, és még mindig rakoncátlankodik, ezért csak így tudtam megoldani.
+A tényleges readme egy mappával beljebb található, mivel ezerkétszáz git commitom ment a levesbe, és még mindig rakoncátlankodik, ezért csak így tudtam megoldani.
