@@ -75,3 +75,22 @@ Dokumentáció
   - POST /profile/unfollow: leiratkozás
   - POST /logout: kijelentkezés
 
+6. Használatoi eset diagram
+![Use-Case diagram](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Use-Case.jpg)
+
+7. Folyamatok meghatározása
+  - Felhasználó
+    - ![Felhasználó folyamatai](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Felhasznalo_folyamatai.jpg)
+  - Vendég
+    - ![Vendég folyamatai](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Vendég folyamatai.jpg)
+    
+8. Felületi tervek
+  - ![Főoldal](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Main_Page.jpg)
+  - ![Regisztrációs képernyő](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Regisztrációs_képernyő.jpg)
+  - ![Kezdőoldal](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Kezdőoldal.jpg)
+  - ![Blogbejegyzés megtekintése](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Bejegyzés_megtekintése.jpg)
+  - ![Profil megtekintése](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/Profil.jpg)
+  
+9. Adatmodell
+  - ![Adatmodell](https://github.com/christsn/Alkfejl/blob/master/Alkfejl/images/entity-relationship.jpg)
+
