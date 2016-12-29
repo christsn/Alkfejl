@@ -1,0 +1,78 @@
+{% extends 'mainlayout' %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.9.0/validator.min.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Regisztráció</h2>
+
+{% if old('errors') %}
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Hibalista</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      {% for error in old('errors') %}
+      <li>{{ error.message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+<form class="form-horizontal" action="" method="post" data-toggle="validator">
+
+  {{csrfField}}
+
+  <fieldset>
+    <legend>Nincs fiókod? Regisztrálj</legend>
+    <div class="form-group has-feedback">
+      <label for="username" class="col-lg-2 control-label">Felhasználói név</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Felhasználói név"
+        value="{{old('username')}}" required>
+        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label for="email" class="col-lg-2 control-label">Email-cím</label>
+      <div class="col-lg-10">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+        value="{{old('email')}}" required>
+        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label for="password" class="col-lg-2 control-label">Jelszó</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Jelszó" data-minlength="6"
+        value="" required>
+        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label for="password_confirm" class="col-lg-2 control-label">Jelszó mégegyszer</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Jelszó"
+        value="" required>
+        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+
+    <div class="form-group has-feedback">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary">Regisztráció</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+{% endblock %}

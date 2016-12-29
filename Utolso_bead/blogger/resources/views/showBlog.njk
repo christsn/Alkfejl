@@ -1,0 +1,76 @@
+{% extends 'mainlayout' %}
+
+{% block scripts %}
+<script src="/showBlog.js"></script>
+<script src="/deleteComment.js"></script>
+<script src="/createComment.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ blog.title }}</h2>
+<p>{{ blog.category.name }}</p>
+<h3>Leírás</h3>
+<pre>
+{{ blog.text }}
+</pre>
+
+{% if currentUser.id == blog.user_id %}
+{{ csrfField | safe }}
+<span class="help-block"></span>
+<a class="btn btn-primary" href="/blog/{{blog.id}}/edit" role="button">Szerkeszt</a>
+<a id="btnDelete" class="btn btn-danger" href="/blog/{{blog.id}}/delete" role="button">Töröl</a>
+
+
+<div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            Biztosan törölni szeretnéd?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Mégse</button>
+        </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{%for com in comments %}
+<div>
+    <ul>
+        
+            <form id="{{com.id}}" class="form-horizontal commentform" action="dl" method="post">  
+                <li>          
+                <div>{{com.text}}</div>     
+                {% if currentUser.id == com.user_id %}
+                <a class="btn btn-danger comDelete" href="/blog/{{blog.id}}/comment/{{com.id}}/delete" role="button">Hozzászólás törlése</a>
+                {% endif %}
+                 </li>
+           </form>
+       
+    </ul>
+</div>
+{% endfor %}
+<div class="newComDiv"></div>
+
+
+   
+    <form id="subCom" class="form-horizontal" action="/blog/{{blog.id}}" method="post">
+         
+        <div class="form-group">
+            <label for="text" class="col-lg-2 control-label">Új hozzászólás</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="newCommentText" name="text" placeholder="Hozzászólás">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

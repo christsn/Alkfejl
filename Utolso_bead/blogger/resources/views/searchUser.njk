@@ -1,0 +1,70 @@
+{% extends 'mainlayout.njk' %}
+{% block scripts %}
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/searchUser.js"></script>
+{% endblock %}
+
+{% block title %}Felhasználók böngészése{% endblock %}
+{% block content %}
+  <h1>Felhasználók böngészése</h1>
+  <form id="searchUser" action="/user" method="GET">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputUserName">Felhasználó neve</label>
+          <input autocomplete="off" name="userName">
+          <div class="list-group user-suggestions suggestions"></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputEmail">Email cím</label>
+          <input type="text" class="form-control" placeholder="email-cím" id="inputEmail" name="email" value="{{ filters.email }}">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-block btn-primary" type="submit">Szűrés</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <h2>Találatok ({{ users.total }})</h2>
+  {% for userBatch in users.data | batch(3) %}
+  <div class="row">
+    {% for user in userBatch %}
+    <div class="col-md-4">
+      <a class="result-item" href="/user/{{ user.id }}">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <strong>{{ user.email }}</strong><br>
+            aki a <em>{{ user.username}}</em>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  Nincs a szűrésnek megfelelő felhasználó.
+  {% endfor %}
+  {% if blogs.lastPage > 1 %}
+  <div class="text-center">
+    <ul class="pagination">
+      {% for page in range(1, users.lastPage + 1) %}
+      {% if page == users.currentPage %}
+      <li class="active">
+        <a href="/user?p={{ page }}&amp;userName={{ filters.userName }}&amp;email={{ filters.email }}">{{ page }}</a>
+      </li>
+      {% else %}
+      <li><a href="/user?p={{ page }}&amp;userName={{ filters.userName }}&amp;email={{ filters.email }}">{{ page }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+{% endblock %}
